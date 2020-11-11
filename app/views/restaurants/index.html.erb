@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>All my fav restaurants</h1>
+
+<% @restaurants.each do |restaurant| %>
+  <h3><%= link_to restaurant.name, restaurant_path(restaurant) %> (<%= restaurant.category %>)</h3>
+  <%= link_to "Delete", restaurant_path(restaurant), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
+<br>
+<br>
+<p><%= link_to "Add a restaurant", new_restaurant_path %></p>
+</div>
+

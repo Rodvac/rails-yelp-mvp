@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 offset-3">
+      <h1><%= @restaurant.name %></h1>
+      <h3> <%= @restaurant.category %> </h3>
+
+      <h5><strong>Address: </strong> <%= @restaurant.address %> </h5>
+      <h5><strong>Phone number: </strong><%= @restaurant.phone_number %> </h5>
+      <h5><strong>Reviews: </strong></h5>
+        <ul>
+          <% @restaurant.reviews.each do |review| %>
+          <li><%= review.content %></li>
+          <%= link_to "Remove", review_path(review), method: :delete, data: {confirm: "Are you sure?"}%>
+          <% end %>
+        </ul>
+
+      <p><%= link_to "Leave a review", new_restaurant_review_path(@restaurant) %></p>
+      <p><%= link_to "Go back to restaurants", restaurants_path %></p>
+      <p><%= link_to "Edit", edit_restaurant_path(@restaurant) %></p>
+      <p><%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: {confirm: "Are you sure?"} %></p>
+    </div>
+  </div>
+</div>
